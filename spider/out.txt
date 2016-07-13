@@ -1,0 +1,30 @@
+
+     最近想用树莓派结合传感器制作一个微博机器人，但是在申请新浪开放平台的Access token的过程中可谓是吃尽了口头，其中最主要的是对于使用Post的方式获得网页不懂。
+     在新浪开放平台创建一个应用很简单，而且获得App key，app secret和回执代码也很简单，网上的教程很多，但是接下来获得Access token对于我这样小白很是不方便，于是仔细研究了一下，写出了下面的Python脚本供大家参考。
+import urllib.request
+import urllib.parse
+from urllib.error import URLError,HTTPError
+
+url='https://api.weibo.com/oauth2/access_token'
+values={'client_id':'339837652',    #key
+        'client_secret':'92299b8986fbc70e2c67d5f14075a3bc',#secret
+        'grant_type':'authorization_code',
+        'redirect_uri':'www.baidu.com',#回执网页
+        'code':'1ecb3d82b39ead686dc8d842e44da491'}#回执代码
+
+url_values=urllib.parse.urlencode(values)
+print(url_values)
+
+url_values=url_values.encode(encoding='UTF8')
+full_url=urllib.request.Request(url,url_values)
+
+try:
+    response=urllib.request.urlopen(full_url) 
+    print(response.read())
+except HTTPError as e:
+    print('Error code:',e.code) 
+except URLError as e:
+    print('Reason',e.reason)
+
+
+
