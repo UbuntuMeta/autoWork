@@ -91,7 +91,10 @@ class Csdn(object):
         bs2 = BeautifulSoup(self.page, 'html.parser', from_encoding="gb18030")
         html_nextArticle_list = bs2.findAll('li',{'class':'prev_article'})
         # print str(html_nextArticle_list[0])
-        html_nextArticle = str(html_nextArticle_list[0])
+        if len(html_nextArticle_list) >0 :
+            html_nextArticle = str(html_nextArticle_list[0])
+        else:
+            return None
         # print html_nextArticle
 
         rex_link = re.compile(r'<a href=\"(.*?)\"',re.DOTALL)
@@ -109,32 +112,41 @@ class Csdn(object):
 
 
     def saveFile(self):
-        print 'enter here'
-        outfile = open('out.txt','a')
+        outfile = open('new2.txt','a')
         outfile.write(self.content)
-
+        outfile.close()
 
     def printInfo(self):
-        print("已下载 url:" + self.url + '\n')
+        print(u"已下载 url:" + self.url + '\n')
 
 
 
 def main():
-    csdn = Csdn('http://blog.csdn.net/mangoer_ys/article/details/38427979')
+    sys.setrecursionlimit(1000000000) 
+    #start_url = raw_input('请输入开始的url:')
+    #http://blog.csdn.net/youzhouliu/article/details/51821195
+    #http://blog.csdn.net/youzhouliu/article/details/51908700
+    start_url = 'http://blog.csdn.net/youzhouliu/article/details/51821195'
+    csdn = Csdn(start_url)
     csdn.open()
     csdn.printInfo()
 
     next_url = csdn.getNextArticle()
 
-    print
     while True:
+        if next_url == None:
+            print 'nothing to download!'
+            break
         if csdn.url != next_url:
             csdn.url = next_url
             csdn.open()
             csdn.printInfo()
+            
         elif csdn.url == next_url:
             print 'All article haved been downloaded!'
             break
+        next_url = csdn.getNextArticle()
+
 
 if __name__ == "__main__":
     main()
