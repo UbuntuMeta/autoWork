@@ -1,0 +1,10 @@
+/user GET
+name string
+age int
+sex int
+
+/user POST
+name string 
+password string
+age int
+sex int

@@ -1,0 +1,57 @@
+
+	/**
+     * @SWG\Get(
+     *   path="
+     
+     /user GET
+     ",
+     *   tags={"users"},
+     *   summary="查询用户信息",
+     *   description="",
+     *   operationId="indexAction",
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *     in="header",
+     *     name="Authorization",
+     *     description="access token",
+     *     required=false,
+     *     type="string",
+     *   ),
+     *   @SWG\Parameter(
+     *     in="query",
+     *     name="page",
+     *     description="当前页数",
+     *     required=false,
+     *     default=1,
+     *     type="integer",
+     *     format="int32"
+     *   ),
+     *   @SWG\Parameter(
+     *     in="query",
+     *     name="limit",
+     *     description="限制条数",
+     *     required=false,
+     *     default=20,
+     *     type="integer",
+     *     format="int32"
+     *   ),
+     *   @SWG\Response(
+     *     response=200,
+     *     description="user collection",
+     *     @SWG\Schema(
+     *       required={"total", "items"},
+     *       @SWG\Property(
+     *         property="total",
+     *         type="integer",
+     *         description="查询结果总数"
+     *       ),
+     *       @SWG\Property(
+     *         property="items",
+     *         type="array",
+     *         @SWG\Items(ref="#/definitions/User")
+     *       )
+     *     )
+     *   )
+     * )
+     */
+     			
