@@ -13,7 +13,6 @@ dateStr = time.strftime("%Y-%m-%d", time.localtime(time.time()))
 file_name = "C:\Users\Thinkpad\Desktop\dailyFiles" + "\\" + dateStr + "\work.txt"
 print file_name
 
-
 server = smtplib.SMTP_SSL("smtp.exmail.qq.com", 465)
 server.login(From,"xxx") #仅smtp服务器需要验证时
 
