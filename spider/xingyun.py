@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+'''
+    author: freephp
+    date:  2016-09-07
+'''
+
 import requests, time, string
 from bs4 import BeautifulSoup
 
