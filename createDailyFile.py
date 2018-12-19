@@ -2,7 +2,7 @@
 import os
 import datetime
 date = datetime.datetime.now().strftime("%Y-%m-%d")
-path = 'C:/Users/Thinkpad/Desktop/dailyFiles'
+path = 'D:/dailyFiles'
 dailyPath = path + '/' + date
 
 
