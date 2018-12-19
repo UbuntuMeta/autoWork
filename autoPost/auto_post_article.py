@@ -58,7 +58,7 @@ def post_article():
         # 'Cookie': 'PHPSESSID=b1ce8b1a94718f1b4803d9938f833021; cookie_token=942b83ca84f69488a2a96c138fb92a6b'
 
         # cookie也可以使用第三个参数进行传递
-        cookies = {'cookie_token': '942b83ca84f69488a2a96c138fb92a6b', 'PHPSESSID': 'b1ce8b1a94718f1b4803d9938f833021'}
+        cookies = {'cookie_token': 'xxxxx', 'PHPSESSID': 'xxxxx'}
         print(headers)
         result = requests.post(post_url, data=post_data, headers=headers,
                                cookies=cookies)  # 第二种方法就是如此，把cookies作为一个参数传给post方法，get方法类似
